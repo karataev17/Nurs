@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Негізгі бет</title>
+      {% load static %}
+
+    <!-- Bootstrap core CSS -->
+      <link href="{% static '/info/homepage/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
+
+    <!-- Custom styles for this template -->
+      <link href="{% static '/info/homepage/css/heroic-features.css' %}" rel="stylesheet">
+          <link href="{% static '/info/bootstrap/vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css">
+
+
+
+  </head>
+
+  <body>
+    <body style="background-color:powderblue;">
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+      <div class="container">
+          <a class="navbar-brand" href="{% url 'index' %}">Сынып жетекшісінің қызметін автоматтандыру</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link text-capitalize">{{ request.user.student.name }}</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#" data-toggle="modal" data-target="#logoutModal">Жүйеден шығу</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  <style>
+
+  </style>
+    <!-- Page Content -->
+    <div class="container" >
+
+      <!-- Jumbotron Header -->
+      <header class="jumbotron my-4">
+        <h1 class="display-3 text-capitalize" >Қош келдіңіз, {{ request.user.student.name }}</h1>
+{#        <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa, ipsam, eligendi, in quo sunt possimus non incidunt odit vero aliquid similique quaerat nam nobis illo aspernatur vitae fugiat numquam repellat.</p>#}
+{#        <a href="#" class="btn btn-primary btn-lg">Call to action!</a>#}
+      </header>
+
+      <!-- Page Features -->
+      <div class="row text-center">
+
+        <div class="col-lg-3 col-md-6 mb-4">
+          <div class="card">
+              <a href="{% url 'attendance' request.user.student.USN %}">
+                <img class="card-img-top" src="{% static 'info/images/attendance2.jpg' %}" alt="">
+              </a>
+              <div class="card-body">
+              <h4 class="card-title">Сабаққа қатысу</h4>
+              <p class="card-text">Әр курс үшін сабаққа қатысу күйін қарап шығыңыз. Әр курстың сабаққа қатысуы сабақтардың тізімі ретінде де көрсетіледі.</p>
+            </div>
+            <div class="card-footer">
+                <a class="btn btn-primary" role="button" href="{% url 'attendance' request.user.student.USN %}"> Қатысуды қарау</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6 mb-4">
+          <div class="card">
+              <a href="{% url 'marks_list' request.user.student.USN %}">
+                <img class="card-img-top" src="{% static 'info/images/marks.jpg' %}" alt="">
+              </a>
+              <div class="card-body">
+              <h4 class="card-title">Бағалар</h4>
+              <p class="card-text">Әр курс үшін алынған бағаларды қарап шығыңыз. Оларға 3 ішкі бағалау, 2 іс-шара және семестр соңындағы емтихан кіреді  </p>
+            </div>
+            <div class="card-footer">
+                <a class="btn btn-primary" role="button" href="{% url 'marks_list' request.user.student.USN %}">Бағаларды қарау</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6 mb-4" >
+          <div class="card">
+              <a href="{% url 'timetable' request.user.student.class_id_id %}">
+                <img class="card-img-top" src="{% static 'info/images/timetable.png' %}" alt="">
+              </a>
+              <div class="card-body">
+              <h4 class="card-title">Сабақ кестесі</h4>
+              <p class="card-text">Кестені кесте түрінде қарау. Кестеде студенттің барлық курстары, сондай-ақ олар өткізілетін уақыт пен күн көрсетіледі.</p>
+            </div>
+            <div class="card-footer">
+                <a class="btn btn-primary" role="button" href="{% url 'timetable' request.user.student.class_id_id %}">Кестені қарау</a>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+      <!-- /.row -->
+
+    </div>
+    <!-- /.container -->
+    <!-- Logout Modal-->
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Кетуге әзірсізбе?</h5>
+            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
+          <div class="modal-body">Егер сіз ағымдағы сессияны аяқтауға дайын болсаңыз, төмендегі "шығу" таңдаңыз.</div>
+          <div class="modal-footer">
+            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+            <a class="btn btn-primary" href="/accounts/logout">Жүйеден шығу</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bootstrap core JavaScript -->
+
+
+      <script src="{% static '/info/homepage/vendor/jquery/jquery.min.js' %}"></script>
+    <script src="{% static '/info/homepage/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+  </body>
+
+</html>

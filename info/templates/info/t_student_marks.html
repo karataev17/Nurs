@@ -1,0 +1,46 @@
+{% extends 'info/base.html' %}
+    {% load static %}
+
+    {% block content %}
+                  <div class="card mb-3">
+            <div class="card-header">
+              <i class="fas fa-table"></i>
+            <b>Бағалар</b></div>
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                  <thead>
+                    <tr>
+                        <th>Студентің USNі</th>
+                        <th>Студенттің аты</th>
+                        <th>Ішкі тест 1</th>
+                        <th>Ішкі тест 2</th>
+                        <th>Ішкі тест 3</th>
+                        <th>Рубежка 1</th>
+                        <th>Рубежка 2</th>
+                        <th>ССЭ</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for sc in sc_list %}
+                    <tr>
+                        <td>{{ sc.student_id }}</td>
+                        <td><b>{{ sc.student.name }} </b></td>
+                        {% for m in sc.marks_set.all %}
+                            <td>{{ m.marks1 }}</td>
+                        {% endfor %}
+                    </tr>
+                    {% empty %}
+                            <p>student has no courses</p>
+                    {% endfor %}
+
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+
+    {% endblock %}
+
+
